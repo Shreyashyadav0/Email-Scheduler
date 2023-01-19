@@ -7,13 +7,13 @@ const SMTP_PORT = 587;
 const HOST_SERVICE = "smtp-relay.sendinblue.com";
 
 //! Create a sendin blue account and enter the credentials
-const USER_EMAIL = "shreyashyadav0@gmail.com";
-const USER_PASSWORD = "xsmtpsib-5f55da99c991828658a9d265d0ea08c3da32003972e28d24870f979a434d5faf-3vsDpUHQ6NYk4jWJ";
-// const USER_PASSWORD = "Ny9oLG@1";
+const USER_EMAIL = "nr2471387@gmail.com";
+const USER_PASSWORD = "xsmtpsib-806debd42006411ce0e896b07a21bc6e03c7f21beeb2d857f5069f205e0d8096-ZyRGDg8IFBHNcmzv";
+
 
 //! You cannot use a temp mail id as your sender's email id as it does not have the functionality to send emails, it can only receive emails
 const SENDERS_EMAIL = "shreyashyadav0@gmail.com"; // Change this to the sender's email id
-const RECEIVERS_EMAIL = "500068277@stu.upes.ac.in"; // Change this to target email id
+const RECEIVERS_EMAIL = "nuhakhangr8@gmail.com"; // Change this to target email id
 const CC = []; // Array of recipients email addresses that will appear on the Cc: field
 const BCC = []; // Array of recipients email addresses that will appear on the Bcc: field
 const EMAIL_SUBJECT = "What is Lorem Ipsum?";
@@ -27,8 +27,8 @@ const app = express();
 const emailOptions = {
   from: SENDERS_EMAIL,
   to: RECEIVERS_EMAIL,
-  cc: CC,
-  bcc: BCC, //
+  cc:CC,
+  bcc:BCC, //
   subject: EMAIL_SUBJECT,
   //   text: EMAIL_BODY_TEXT, //! You can either keep the email body in plaintext or in html, but you cannot use both at the same time
   html: EMAIL_BODY_HTML,
@@ -45,13 +45,13 @@ const transporter = nodemailer.createTransport({
 });
 
 //! Refer: https://crontab.guru/ to understand how cron syntax works
-scheduler.schedule("* * * * *", async () => {
+scheduler.schedule("* * * * *",async () => {
   console.log("Sending email");
 
   // Delivering mail with sendMail method
   transporter.sendMail(emailOptions, (err, info) => {
     if (err) {
-      console.log(err);
+      console.error(err);
     } else {
       console.log("Email sent: " + info.response);
     }
